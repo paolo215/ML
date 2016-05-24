@@ -1,0 +1,9 @@
+pip and upgrade
+python-dev
+numpy
+scipy
+scikit-learn
+pyparsing
+pydot
+
+
