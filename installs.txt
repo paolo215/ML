@@ -5,5 +5,8 @@ scipy
 scikit-learn
 pyparsing
 pydot
+upgrade setuptools
+apt-get libfreetype6
+matplotlib
 
 
