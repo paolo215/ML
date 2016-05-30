@@ -5,11 +5,12 @@ import datetime
 import time
 import numpy as np
 import matplotlib
+import matplotlib.pyplot as plt
+import pickle #open and save classifier 
 from sklearn import preprocessing
 from sklearn import cross_validation
 from sklearn import svm
 from sklearn.linear_model import LinearRegression
-import matplotlib.pyplot as plt
 
 matplotlib.use("Agg")
 matplotlib.style.use("ggplot")
@@ -45,9 +46,18 @@ y = np.array(df["label"])
 
 x_train, x_test, y_train, y_test = cross_validation.train_test_split(x, y, test_size=0.2) #take features, shuffle, and output 
 
-clf = LinearRegression(n_jobs=10)
+#clf = LinearRegression(n_jobs=10)
 #clf = svm.SVR(kernel="poly")
-clf.fit(x_train, y_train)
+#clf.fit(x_train, y_train)
+
+#save training step
+#with open("linearregression.pickle", "wb") as f:
+#	pickle.dump(clf, f)
+
+#load pickle
+pickle_in = open("linearregression.pickle", "rb")
+clf = pickle.load(pickle_in)
+
 accuracy = clf.score(x_test, y_test)
 
 
@@ -57,7 +67,6 @@ print forecast_set, accuracy, forecast_out
 
 df["Forecast"] = np.nan
 last_date = df.iloc[-1].name #last date
-print last_date
 last_unix = time.mktime(datetime.date(last_date.year, last_date.month, last_date.day).timetuple())
 one_day = 86400
 next_unix = last_unix + one_day
