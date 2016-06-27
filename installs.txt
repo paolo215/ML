@@ -1,12 +1,15 @@
 pip and upgrade
-python-dev
-numpy
-scipy
-scikit-learn
-pyparsing
-pydot
-upgrade setuptools
-apt-get libfreetype6
-matplotlib
+apt-get install python-dev
+pip install numpy
+pip install scipy
+pip install pandas
+pip install scikit-learn
+pip install pyparsing
+pip install pydot
+pip install setuptools --upgrad
+apt-get install libfreetype6
+apt-get install libxft-dev
+pip install matplotlib
+pip install quandl
 
 
