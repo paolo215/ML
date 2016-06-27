@@ -10,8 +10,8 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=.5)
 #from sklearn import tree
 #my_classifier = tree.DecisionTreeClassifier()
 
-#from sklearn.neighbors import KNeighborsClassifier
-#my_classifier = KNeighborsClassifier()
+from sklearn.neighbors import KNeighborsClassifier
+my_classifier = KNeighborsClassifier()
 
 """
     classifier(feature) => label
