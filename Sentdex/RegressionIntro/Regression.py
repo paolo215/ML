@@ -1,7 +1,8 @@
 import quandl
 import pandas as pd
+import math
 
-
+# df = data frame
 df = quandl.get("WIKI/GOOGL")
 
 # print df.head() # each column is a feature
@@ -18,7 +19,24 @@ df["PCT_change"] = (df["Adj. Close"] - df["Adj. Open"]) / df ["Adj. Open"] * 100
 df = df[["Adj. Close", "HL_PCT", "PCT_change", "Adj. Volume"]]
 
 
-print df.head()
-
 # Features are the attributes that make up the label
 # Label is a prediction into the future
+
+forecast_col = "Adj. Close"
+
+# fill not available
+# ML can't work with NaN data so replace or get rid 
+# of data.
+df.fillna("-99999", inplace=True)
+
+# Regression Algorithm
+# Get the number of days out (predict 10% of the df)
+forecast_out = int(math.ceil(0.01*len(df)))
+
+
+# Shifting col. negatively (up)
+# Each row would be the Adj. Close price 10 days
+# into the future.
+df["label"] = df[forecast_col].shift(-forecast_out)
+df.dropna(inplace=True)
+# print(df.head())
