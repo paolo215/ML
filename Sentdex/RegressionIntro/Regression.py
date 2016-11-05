@@ -17,8 +17,12 @@ from sklearn import svm
 from sklearn.linear_model import LinearRegression
 
 
+# Matplotlib
 import matplotlib.pyplot as plt
 from matplotlib import style
+
+
+import pickle
 
 
 style.use("ggplot")
@@ -83,13 +87,23 @@ X_train, X_test, y_train, y_test = cross_validation.train_test_split(X, y, test_
 # How easy to switch algorith
 # clf = LinearRegression()
 # clf = svm.SVR()
-
 # Check documentation if LinearRegression can be threaded
-clf = LinearRegression(n_jobs=-1)
+# clf = LinearRegression(n_jobs=-1)
 
 
 # train
-clf.fit(X_train, y_train)
+# clf.fit(X_train, y_train)
+
+# Save classifier
+# with open("linearRegression.pickle", "wb") as f:
+#	 pickle.dump(clf, f)
+
+
+# Now we don't have to train the model every time we run this
+pickle_in = open("linearRegression.pickle", "rb")
+clf = pickle.load(pickle_in)
+
+
 
 # test
 accuracy = clf.score(X_test, y_test)
