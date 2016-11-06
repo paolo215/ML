@@ -41,6 +41,7 @@ df["HL_PCT"] = (df["Adj. High"] - df["Adj. Close"]) / df ["Adj. Close"] * 100.0
 
 df["PCT_change"] = (df["Adj. Close"] - df["Adj. Open"]) / df ["Adj. Open"] * 100.0
 
+#            price         x          x             x
 df = df[["Adj. Close", "HL_PCT", "PCT_change", "Adj. Volume"]]
 
 
@@ -56,7 +57,7 @@ df.fillna("-99999", inplace=True)
 
 # Regression Algorithm
 # Get the number of days out (predict 10% of the df)
-forecast_out = int(math.ceil(0.01*len(df)))
+forecast_out = int(math.ceil(0.1*len(df)))
 
 
 # Shifting col. negatively (up)
