@@ -1,0 +1,6 @@
+Linear Regression
+Pickle
+Quandl
+Creating Best fit line
+R Squared Theory
+Coefficient of determination
