@@ -10,8 +10,7 @@ import string
 
 data = {}
 
-df = pd.read_csv("letter-recognition.data")
-label = df["lettr"]
+df = pd.read_csv("letter-recognition1.data")
 
 bias = [1 for _ in range(len(df))]
 df.insert(1, "bias", bias)
