@@ -14,5 +14,15 @@ Dot product = A . B
 	This is a scalar value
 
 
+***Support Vector Assertion p22 NOTES
+equation to devirate support vector:
+	y(i) = class of feature
+	x = unknown vector
+	w = vector perpendicular to the hyperplane
+	y(i) * (x . w + bias) - 1 = 0
+
+	
+
+
 
 
