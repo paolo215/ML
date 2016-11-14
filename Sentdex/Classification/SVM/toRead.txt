@@ -1,1 +1,18 @@
-Support Vectory Machine - a binary classifier
+Support Vectory Machine 
+	- a binary classifier 
+	- separate data into two groups. 
+	- Positives and Negatives
+
+Magnitude = ||A||
+	sqrt(a^2 + b^2)
+
+
+Dot product = A . B
+	A = [a,b]
+	B = [c,d]
+	A . B = (a * c) + (b * d)
+	This is a scalar value
+
+
+
+
