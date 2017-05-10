@@ -11,5 +11,7 @@ apt-get install libfreetype6
 apt-get install libxft-dev
 pip install matplotlib
 pip install quandl
+pip install statistics
+sudo apt-get install graphviz
 
 
