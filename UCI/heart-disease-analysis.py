@@ -12,7 +12,6 @@ AGE, SEX, CP, TRESTBPS, CHOL, FBS, RESTECG, THALACH, EXANG, OLDPEAK, SLOPE, CA, 
 
 label = NUM
 
-print(df.head())
 
 def analyze_age_diagnosis():
     # Findings: Age above 45 are more likely to get diagnosed
@@ -23,4 +22,19 @@ def analyze_age_diagnosis():
     plt.clf()
 
 
+def analyze_sex_diagnosis():
+    fig, ax = plt.subplots()
+    # Ratio between Female and Males are not equal. However, it seems that Males
+    # are more likely to get diagnosed
+    ax.hist([df[df[label] == 0][SEX], df[df[label]==1][SEX]], bins=2, stacked=True, color=["g", "r"],\
+            label=["Not diagnosed", "Diagnosed"])
+    ax.set_xticks([0.25, 0.75])
+    ax.set_xticklabels(["Female", "Male"])
+    ax.legend(loc="upper right")
+    plt.savefig("Sex.png")
+    plt.clf()
+    
+    
+
 analyze_age_diagnosis()
+analyze_sex_diagnosis()
