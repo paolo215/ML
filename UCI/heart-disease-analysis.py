@@ -18,6 +18,8 @@ def analyze_age_diagnosis():
     plt.hist([df[df[label] == 0][AGE], df[df[label]==1][AGE]], bins=30, stacked=True, color=["g", "r"],\
             label=["Not diagnosed", "Diagnosed"])
     plt.legend(loc="upper right")
+    plt.ylabel("# of people")
+    plt.xlabel("Age")
     plt.savefig("Age.png")
     plt.clf()
 
@@ -30,11 +32,52 @@ def analyze_sex_diagnosis():
             label=["Not diagnosed", "Diagnosed"])
     ax.set_xticks([0.25, 0.75])
     ax.set_xticklabels(["Female", "Male"])
+    ax.set_ylabel("# of people")
+    ax.set_xlabel("Age")
     ax.legend(loc="upper right")
     plt.savefig("Sex.png")
     plt.clf()
     
     
+def analyze_age_female_diagnosis():
+    fig, ax = plt.subplots()
+    # Females age between 55 to 65 are more likely to get diagnosed
+    ax.hist([df[df[SEX] == 0][df[label] == 0][AGE], df[df[SEX] == 0][df[label] == 1][AGE]], bins=30, stacked=True, color=["g", "r"], label=["Not diagnosed", "Diagnosed"])
+    ax.set_ylabel("# of people")
+    ax.set_xlabel("Age")
+    ax.legend(loc="upper right")
+    plt.savefig("Female_Age.png")
+    plt.clf()
+
+
+def analyze_age_male_diagnosis():
+    fig, ax = plt.subplots()
+    # Males age above 40 are likely to get diagnosed
+    # 55 to 65 have higher likelihood
+    ax.hist([df[df[SEX] == 1][df[label] == 0][AGE], df[df[SEX] == 1][df[label] == 1][AGE]], bins=30, stacked=True, color=["g", "r"], label=["Not diagnosed", "Diagnosed"])
+    ax.legend(loc="upper right")
+    ax.set_ylabel("# of people")
+    ax.set_xlabel("Age")
+    plt.savefig("Male_Age.png")
+    plt.clf()
+    
+
+def analyze_age_sex_diagnosis():
+    fig, ax = plt.subplots()
+    non_diag = df[df[label] == 0]
+    diag = df[df[label] == 1]
+    plt.hist([non_diag[df[SEX] == 0][AGE], non_diag[df[SEX] == 1][AGE], diag[df[SEX] == 0][AGE], diag[df[SEX] == 1][AGE]], bins=30, stacked=True, label=["Female - Not diagnosed", "Male - Not diagnosed", "Female - Diagnosed", "Male - Diagnosed"] )
+    ax.legend(loc="upper left")
+    ax.set_ylabel("# of people")
+    ax.set_xlabel("Age")
+    plt.savefig("Age_Sex.png")
+    plt.clf()
+
 
 analyze_age_diagnosis()
 analyze_sex_diagnosis()
+analyze_age_female_diagnosis()
+analyze_age_male_diagnosis()
+analyze_age_sex_diagnosis()
+
+
