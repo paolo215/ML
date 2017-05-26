@@ -1,17 +1,17 @@
-pip and upgrade
+pip install pip --upgrade
 apt-get install python-dev
-pip install numpy
-pip install scipy
-pip install pandas
-pip install scikit-learn
-pip install pyparsing
-pip install pydot
-pip install setuptools --upgrad
+pip install numpy --upgrade
+pip install scipy --upgrade
+pip install pandas --upgrade
+pip install scikit-learn --upgrade
+pip install pyparsing --upgrade
+pip install pydot --upgrade
+pip install setuptools --upgrade
 apt-get install libfreetype6
 apt-get install libxft-dev
-pip install matplotlib
-pip install quandl
-pip install statistics
+pip install matplotlib --upgrade
+pip install quandl --upgrade
+pip install statistics --upgrade
 sudo apt-get install graphviz
 
 
