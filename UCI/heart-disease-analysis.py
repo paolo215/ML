@@ -5,12 +5,19 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.model_selection import train_test_split
+from sklearn.svm import SVC
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
 
 df = pd.read_csv("processed.cleveland.data", header=None)
+df = df.replace('?', float(0.0))
+
 
 AGE, SEX, CP, TRESTBPS, CHOL, FBS, RESTECG, THALACH, EXANG, OLDPEAK, SLOPE, CA, THAL, NUM = range(14)
-
 label = NUM
+
+df[label][df[label] == 0] = -1.0
+df[label][df[label] > 1] = 1.0
 
 
 def analyze_age_diagnosis():
@@ -74,10 +81,27 @@ def analyze_age_sex_diagnosis():
     plt.clf()
 
 
+def analyze_age_sex():
+    global df
+    clf_rfc = RandomForestClassifier(n_estimators=30, max_depth=1, min_samples_split=2) 
+    clf_svm = SVC(C=0.65, kernel="sigmoid")
+    labels = np.array(df[label])
+    df_features = df[[AGE, SEX]]
+
+    trainingX, testingX, trainingY, testingY = train_test_split(df_features, labels, test_size=0.5, stratify=labels)
+
+    clf_rfc.fit(trainingX, trainingY)
+    clf_svm.fit(trainingX, trainingY)
+    score_rfc = clf_rfc.score(testingX, testingY)
+    score_svm = clf_svm.score(testingX, testingY)
+    print("rfc", score_rfc)
+    print("svm", score_svm) 
+
+        
 analyze_age_diagnosis()
 analyze_sex_diagnosis()
 analyze_age_female_diagnosis()
 analyze_age_male_diagnosis()
 analyze_age_sex_diagnosis()
-
+analyze_age_sex()
 
